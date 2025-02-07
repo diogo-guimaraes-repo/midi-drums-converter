@@ -1,29 +1,16 @@
-#!/usr/bin/env python
-import sys
 from src.converters.midi_converter import MidiConverter
-from src.models.midi_file import MidiFile
 
-def main():
-    if len(sys.argv) < 3:
-        print("Usage: python convert_midi.py <input_file.mid> <output_file.mid>")
-        sys.exit(1)
-    
-    input_file = sys.argv[1]
-    output_file = sys.argv[2]
-
-    # Load the MIDI file.
-    midi_file = MidiFile(input_file)
-    midi_file.load()  # Implement this method to populate midi_file.data from the file.
-    
-    # Convert the MIDI data.
+def convert_midi_file(input_path, output_path):
     converter = MidiConverter()
-    converter.convert_to_pv(midi_file)
-    
-    # Save the converted MIDI file.
-    midi_file.filename = output_file
-    midi_file.save()  # Implement this method to write midi_file.data back into a MIDI file.
-    
-    print(f"Converted MIDI file saved to {output_file}")
+    converter.convert_to_pv(input_path, output_path)
 
 if __name__ == '__main__':
-    main()
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Convert MIDI file notes.')
+    parser.add_argument('input_path', type=str, help='Path to the input MIDI file')
+    parser.add_argument('output_path', type=str, help='Path to the output MIDI file')
+    args = parser.parse_args()
+
+    convert_midi_file(args.input_path, args.output_path)
+    print(f'Converted MIDI file saved to {args.output_path}')
