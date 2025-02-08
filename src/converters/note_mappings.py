@@ -36,7 +36,8 @@ HIHAT_MAPPINGS = {
     'D#-1': 'B1',  # hi-hat open
     'E-1': 'B1',  # hi-hat open
     'F-1': 'B1',  # hi-hat open,
-    'A#-1': 'G1' #hi-hat closed tip
+    'A#-1': 'G1', #hi-hat closed tip
+    'C3': 'B1', #hi-hat open
 }
 
 # Cymbal 1 mappings

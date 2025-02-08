@@ -88,12 +88,13 @@ class TestMidiConverter(unittest.TestCase):
             16,   # 16 → "E-1"
             17,    # 17 → "F-1"
             22,    # 17 → "F-1"
+            60,    # 60 → "C3"
         ]
         # Expected mapping for hi-hats, according to your NOTE_MAPPINGS:
         expected_note_names = [
             'G1', 'G1', 'C2', 'C2', 'C2', 'G1', 'G1', 'F1', 'F#1', 
             'B1', 'B1', 'B1', 'B1', 'B1', 'B1', 'B1', 'B1', 'B1', 'B1', 
-            'B1', 'B1', 'B1', 'G1'
+            'B1', 'B1', 'B1', 'G1', 'B1'
         ]
         expected_notes = [self.converter.note_name_to_int(n) for n in expected_note_names]
         for note, exp in zip(input_notes, expected_notes):
